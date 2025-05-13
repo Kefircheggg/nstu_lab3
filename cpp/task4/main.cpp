@@ -33,7 +33,6 @@ int main() {
   
   vector<int> nums(n);
   cout << "Последовательность: ";
-  vector<int> nums(n);
   for (int i = 0; i < n; ++i) {
       cin >> nums[i];
   }

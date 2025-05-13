@@ -13,7 +13,6 @@ mt19937 mt_rand(random_device{}());
 
 // генерация рандомных чисел с равной вероятностью
 int uniRand(int a, int b) { return uniform_int_distribution<int>(a, b)(mt_rand); }
-
 double uniRandD(int a, int b) { return uniform_real_distribution<double>(a, b)(mt_rand); }
 
 // возведение в степень по модулю через двоичное разложение
@@ -28,7 +27,6 @@ long powModDecopmose(long a, long x, long p) {
     }
     return res;
 }
-
 // решето эратосфена
 vector<int> eratSieve(const int limit) {
     vector<bool> is_prime(limit, true);
@@ -41,7 +39,6 @@ vector<int> eratSieve(const int limit) {
             }
         }
     }
-
     vector<int> primes;
     for (int i = 2; i < limit; ++i) {
         if (is_prime[i]) {
@@ -202,11 +199,9 @@ void resultsPrint(const vector<int>& nums, const vector<bool>& nums_good, const 
 int main() {
   int maxPrime = 500;
   vector<int> primes = eratSieve(maxPrime);
-
   int len_bit;
   cout << "Введите длину желаемого числа (1-32 бит): ";
   cin >> len_bit;
-
   int testType;
   cout << "Укажите желаемый тип теста (1 – Миллера, 2 – Поклингтона, 3 – ГОСТ): ";
   cin >> testType;
@@ -217,11 +212,9 @@ int main() {
           int n;
           int k = 0;
           int prob;
-
           vector<int> nums;
           vector<bool> nums_good;
           vector<int> declined;
-
           while (nums.size() < 10) {
               tie(n, q) = builderTest(primes, len_bit);
               prob = millerTest(n, 10, q);
@@ -250,11 +243,9 @@ int main() {
           int n;
           int k = 0;
           int probability;
-
           vector<int> nums;
           vector<bool> nums_good;
           vector<int> declined;
-
           while (nums.size() != 10) {
               tie(n, q) = builderTest(primes, len_bit);
               probability = poklingtonTest(n, 10, q);
@@ -274,13 +265,11 @@ int main() {
                   k++;
               }
           }
-
           resultsPrint(nums, nums_good, declined);
           break;
       }
       case 3: {
           cout << "Генерация простых чисел заданной длины на основе ГОСТ 34.10-94\n";
-
           vector<int> res;
           while (res.size() != 10) {
               int p = build_new_from_old(primes, len_bit);
@@ -289,7 +278,6 @@ int main() {
                   res.push_back(p);
               }
           }
-
           for (int i = 1; i <= res.size(); i++) {
               cout << setw(3) << i << setw(8) << res[i-1] << endl;
           }
@@ -301,6 +289,4 @@ int main() {
           return 0;
       }
   }
-
-
 }

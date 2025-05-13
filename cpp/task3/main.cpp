@@ -47,7 +47,7 @@ bool is_possibly_rational(double x) {
     return false;
 }
 
-int main(void) {
+int main() {
     int a, b;
     cout << "Введите целые a и b: ";
     cin >> a >> b;
